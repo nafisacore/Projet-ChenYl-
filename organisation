@@ -1,5 +1,56 @@
-création d'un seul fichier avec tous les animaux
-créer une structure animal
-rechercher 4 types d'animaux
-variantes : âge et nettoyage
-rechercher des idées de personnalisation du projet
+#include <stdio.h>
+
+//Especes
+typedef struct {
+ Cheval,Chien,Chat,Souris
+} Especes;
+
+//Date
+typedef struct {
+  int jour;
+  int mois;
+  int année;
+} Date;
+
+//Animal
+typedef struct {
+ int identification;
+ char* nom;
+ Especes especes;
+ Date date;
+ int poids;
+ char* commentaire;
+}Animal;
+
+Date constructeur(){
+  Date d;
+  int test=0;
+  d.jour=0;
+  d.mois=0;
+  d.année=0;
+  printf("Veuillez saisir le jour")
+  do{
+  test=scanf("%d",&d.jour);
+  while(getchar()!='\n'){};
+  }while(test<=0 || d.jour<1 || d.jour>31);
+  test=0;
+  printf("Veuillez saisir le mois");
+  do{
+       test=scanf("%d",&d.mois);
+       while(getchar()!='\n'){};
+  }while(test<=0 || d.mois<1 || d.mois>12);
+  test=0;
+  printf("Veuillez saisir une année");
+  do {
+       test=scanf("%d",&d.année);
+       while(getchar()!='n'){};
+  }while(test<=0 || d.année==0);
+  return d;
+  
+Animal constructeur(){
+   Animal a;
+   FILE* f1=NULL;
+   f1=fopen("NuméroIdentification.txt","a+");
+   
+   FILE* f2=NULL;
+   f2=fopen(a.identification, "w");
