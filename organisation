@@ -5,12 +5,6 @@ typedef struct {
  Hamster,Chien,Chat,Souris
 } Especes;
 
-//Date
-typedef struct {
-  int jour;
-  int mois;
-  int année;
-} Date;
 
 //Animal
 typedef struct {
@@ -22,17 +16,7 @@ typedef struct {
  char* commentaire;
 }Animal;
 
-Date constructeur(){
-  Date d;
-  int test=0;
-  d.année=0;
 
-  printf("Veuillez saisir une année");
-  do {
-       test=scanf("%d",&d.année);
-       while(getchar()!='n'){};
-  }while(test<=0 || d.année==0);
-  return d;
   
 Animal constructeur(){
    Animal a;
