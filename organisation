@@ -2,7 +2,7 @@
 
 //Especes
 typedef struct {
- Cheval,Chien,Chat,Souris
+ Hamster,Chien,Chat,Souris
 } Especes;
 
 //Date
@@ -25,21 +25,8 @@ typedef struct {
 Date constructeur(){
   Date d;
   int test=0;
-  d.jour=0;
-  d.mois=0;
   d.année=0;
-  printf("Veuillez saisir le jour")
-  do{
-  test=scanf("%d",&d.jour);
-  while(getchar()!='\n'){};
-  }while(test<=0 || d.jour<1 || d.jour>31);
-  test=0;
-  printf("Veuillez saisir le mois");
-  do{
-       test=scanf("%d",&d.mois);
-       while(getchar()!='\n'){};
-  }while(test<=0 || d.mois<1 || d.mois>12);
-  test=0;
+
   printf("Veuillez saisir une année");
   do {
        test=scanf("%d",&d.année);
