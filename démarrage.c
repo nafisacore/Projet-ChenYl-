@@ -33,7 +33,7 @@ int main() {
     int nb_animaux = 0;
 
 
-    charger_animaux(&animaux, &nb_animaux);  // Chargement initial
+    charger_animaux(animaux, &nb_animaux);  // Chargement initial
 
     do {
         afficherMenu();
