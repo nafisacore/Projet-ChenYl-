@@ -1,7 +1,7 @@
 #include "animal.h"
 
 
-void rechercher_par_nom() {
+void rechercher_par_nom(Animal* animaux, int nb_animaux) {
     char nom_recherche[100];
     int trouve = 0;
     int veriff;
