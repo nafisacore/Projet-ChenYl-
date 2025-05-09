@@ -21,12 +21,23 @@ void afficherMenu() {
     printf("|________________________________________|\n");    
 }
  
+void vide_buffer(){
+    while(getchar() != '\n'){
+    }
+}
+
 
 int main() {  
     int choix, verif;
+    Animal** animaux = NULL;
+    int nb_animaux = 0;
+
+
+    charger_animaux(&animaux, &nb_animaux);  // Chargement initial
+
     do {
         afficherMenu();
-        printf("Entrer un nombre entre 1 et 4 : ");
+        printf("Entrer un nombre entre 1 et 6 : ");
         verif = scanf("%d", &choix);
 
         if (verif != 1) {
@@ -37,24 +48,24 @@ int main() {
 
         switch (choix) {
             case 1:
-                rechercher_animal();
-                quitter();
+                rechercher_animal(animaux, nb_animaux);
+                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 2:
-                ajouter_animal();
-                quitter();
+                ajouter_animal(&animaux, &nb_animaux);
+                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 3:
-                supp_animal();
-                quitter();
+                supp_animal(&animaux, &nb_animaux);
+                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 4:
-                day_clean();
-                quitter();
+                day_clean(animaux, nb_animaux);
+                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;  
             case 5:
-                inv_age();
-                quitter();
+                inv_age(animaux, nb_animaux);
+                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;      
             case 6:
                 printf("Au revoir !\n");
@@ -64,7 +75,9 @@ int main() {
                 printf("Choix invalide, reessayer :\n");
         }
     } while (choix != 4 && choix != 2 && choix != 3 && choix != 1 && choix != 5 && choix != 6);
-    liberer_memoire();
-    free(animaux);  // Libère le tableau d'animaux
+
+    sauvegarder_animaux(animaux, nb_animaux);
+    liberer_memoire(animaux, nb_animaux);
+    free(animaux);
     return 0;
 } 
