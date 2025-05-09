@@ -1,6 +1,6 @@
 #include "animal.h"
 
-void day_clean() {
+void day_clean(Animal* animaux, int nb_animaux) {
     int total_minutes = 0;
 
     // Nettoyage des cages occupées
