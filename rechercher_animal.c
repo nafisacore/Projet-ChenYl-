@@ -1,12 +1,12 @@
 #include "animal.h"
 
 
-void rechercher_animal() {
+void rechercher_animal(Animal* animaux, int nb_animaux) {
     int choixx, veriff;
     
     do{
         printf("Souhaitez-vous rechercher l'animal par :\n 1. Son nom\n2. Son ID\n3. Son type d'âge\n4. Quitter\nChoisissez : ");
-        veriff = scanf("%d", choixx);
+        veriff = scanf("%d", &choixx);
 
         if (veriff != 1) {
             printf("Entree invalide, reessayer : \n");
@@ -16,13 +16,13 @@ void rechercher_animal() {
 
         switch (choixx) {
             case 1:
-                rechercher_par_nom();
+                rechercher_par_nom(animaux, nb_animaux);
                 break;
             case 2:
-                rechercher_par_id();
+                rechercher_par_id(animaux, nb_animaux);
                 break;
             case 3:
-                rechercher_par_age();
+                rechercher_par_age(animaux, nb_animaux);
                 break;
             case 4:
                 printf("AU revoir !");
