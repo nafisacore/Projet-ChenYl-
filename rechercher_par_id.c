@@ -1,7 +1,7 @@
 #include "animal.h"
 
 
-void rechercher_par_id() {
+void rechercher_par_id(Animal* animaux, int nb_animaux) {
     int id_recherche, veriff;
     int trouve = 0;
 
@@ -42,3 +42,4 @@ void rechercher_par_id() {
         printf("Aucun animal trouvé avec cet ID.\n");
     }
 }
+
