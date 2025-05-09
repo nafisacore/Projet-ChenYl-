@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "suite.c"
-#include "ajt_animal.c"
-#include "supp_animal.c"
-#include "rechercher_animal.c"
-#include "rechercher_par_nom.c"
-#include "rechercher_par_id.c"
-#include "rechercher_par_age.c"
-#include "variante_nettoyage.c"
-#include "inventaire_age.c"
+
 #define MAX_ANIMAUX 50
 
 
@@ -31,26 +23,32 @@ typedef struct {
     char *commentaire;
 } Animal;
 
-void vide_buffer(){
-    while(getchar() != '\n'){
-    }
-}
+//démarrage.c
+void afficherMenu();
+void vide_buffer();
+void ajouter_animal(Animal** animaux, int* nb_animaux);
+void supp_animal(Animal** animaux, int* nb_animaux);
 
-void quitter(){
-    int retour, verif;
-        do {
-            printf("\nSouhaitez-vous retourner au menu principal ? (1 = Oui / 0 = Non) : ");
-            verif = scanf("%d", &retour);
-            vide_buffer();
+//recherche
+void rechercher_animal(Animal* animaux, int nb_animaux);
+void rechercher_par_nom(Animal* animaux, int nb_animaux);
+void rechercher_par_id(Animal* animaux, int nb_animaux);
 
-            if (verif != 1 || (retour != 0 && retour != 1)) {
-                printf("Entrée invalide, veuillez taper 1 ou 0.\n");
-            }
-        } while (verif != 1 || (retour != 0 && retour != 1));
+//recherche par age
+int calculer_age(int annee_naissance);
+void rechercher_par_age(Animal* animaux, int nb_animaux);
 
-        if (retour == 0) {
-            printf("Merci d'avoir utilisé Chenyl-Tech !\n");
-            exit(10);
-        }
-}
+//variantes
+void day_clean(Animal* animaux, int nb_animaux);
+void inv_age(Animal* animaux, int nb_animaux);
+
+//suite.c
+const char* espece_en_chaine(Espece e);
+Espece chaine_en_espece(const char* s);
+void charger_nombre_animaux(int* nb_animaux);
+void sauvegarder_nombre_animaux(int nb_animaux);
+void charger_animaux(Animal** animaux, int* nb_animaux);
+void sauvegarder_animaux(Animal* animaux, int nb_animaux);
+void liberer_memoire(Animal* animaux, int nb_animaux);
+
 
