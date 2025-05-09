@@ -1,6 +1,6 @@
 #include "animal.h"
 
-void inv_age() {
+void inv_age(Animal* animaux, int nb_animaux) {
     if (nb_animaux == 0) {
         printf("Aucun animal dans le refuge.\n");
         return;
