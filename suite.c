@@ -22,24 +22,22 @@ Espece chaine_en_espece(const char* s) {
 }
 
 
-Animal* animaux = NULL;
-int nb_animaux = 0;
 
 // Charge le nombre d'animaux depuis le fichier
-void charger_nombre_animaux() {
+void charger_nombre_animaux(int *nb_animaux) {
     FILE *f = fopen("nb_animaux.txt", "r");
     if (f != NULL) {
-        fscanf(f, "%d", &nb_animaux);
+        fscanf(f, "%d", nb_animaux);
         fclose(f);
     } else {
         printf("Erreur d'ouverture du fichier.\n");
-        nb_animaux = 0;
+        *nb_animaux = 0;
         exit(1);
     }
 }
 
 // Sauvegarde le nombre d'animaux dans le fichier
-void sauvegarder_nombre_animaux() {
+void sauvegarder_nombre_animaux(int nb_animaux) {
     FILE *f = fopen("nb_animaux.txt", "w");
     if (f != NULL) {
         fprintf(f, "%d", nb_animaux);
@@ -52,14 +50,14 @@ void sauvegarder_nombre_animaux() {
 }
 
 // Charge les animaux depuis le fichier
-void charger_animaux() {
-    charger_nombre_animaux();
-    if (nb_animaux > MAX_ANIMAUX) {
-        nb_animaux = MAX_ANIMAUX;
+void charger_animaux(Animal** animaux, int* nb_animaux) {
+    charger_nombre_animaux(nb_animaux);
+    if (*nb_animaux > MAX_ANIMAUX) {
+        *nb_animaux = MAX_ANIMAUX;
     }
 
-    animaux = malloc(nb_animaux * sizeof(Animal));
-    if (animaux == NULL) {
+    *animaux = malloc(*nb_animaux * sizeof(Animal));
+    if (*animaux == NULL) {
         printf("Erreur d'allocation mémoire.\n");
         exit(3);
     }
@@ -70,30 +68,31 @@ void charger_animaux() {
         exit(4);
     }
 
-    for (int i = 0; i < nb_animaux; i++) {
+    for (int i = 0; i < *nb_animaux; i++) {
         char comm[500];
+        char esp[50];
 
         fscanf(f, "%d;%s;%s;%d;%f;%199[^\n]\n",
-               &animaux[i].id,
-               animaux[i].nom,
-               chaine_en_espece(animaux[i].espece),
-               &animaux[i].annee_naissance,
-               &animaux[i].poids,
+               &(*animaux)[i].id,
+               (*animaux)[i].nom,
+               esp,
+               &(*animaux)[i].annee_naissance,
+               &(*animaux)[i].poids,
                comm);
-
-        animaux[i].commentaire = malloc(strlen(comm) + 1);
-        if (animaux[i].commentaire == NULL) {
+        (*animaux)[i].espece = chaine_en_espece(esp);
+        (*animaux)[i].commentaire = malloc(strlen(comm) + 1);
+        if ((*animaux)[i].commentaire == NULL) {
             printf("Erreur d'allocation mémoire.\n");
             exit(6);
         }
-        strcpy(animaux[i].commentaire, comm);
+        strcpy((*animaux)[i].commentaire, comm);
     }
 
     fclose(f);
 }
 
 //Sauvegarde les animaux dans le fichier
-void sauvegarder_animaux() {
+void sauvegarder_animaux(Animal* animaux, int nb_animaux) {
     FILE *f = fopen("animaux.txt", "w");
     if (f == NULL) {
         printf("Erreur lors de l'ouverture du fichier animaux.txt\n");
@@ -111,12 +110,12 @@ void sauvegarder_animaux() {
     }
 
     fclose(f);
-    sauvegarder_nombre_animaux(); 
+    sauvegarder_nombre_animaux(nb_animaux); 
 }
 
-void liberer_memoire() {
+void liberer_memoire(Animal* animaux, int nb_animaux) {
     // Libérer la mémoire allouée pour les commentaires des animaux
     for (int i = 0; i < nb_animaux; i++) {
         free(animaux[i].commentaire); 
     }
-}  
+}   
