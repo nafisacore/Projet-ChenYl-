@@ -7,8 +7,9 @@ int calculer_age(int annee_naissance) {
 }
 
 
-void rechercher_par_age() {
+void rechercher_par_age(Animal* animaux, int nb_animaux) {
     int choix_age;
+    char espc;
     int trouve = 0;
 
     // Demander à l'utilisateur de spécifier un type d'âge
@@ -36,10 +37,11 @@ void rechercher_par_age() {
             printf("Animal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
-            printf("Espèce : %d\n", animaux[i].espece);  // Affichage de l'espèce
+            printf("Espèce : %d\n", espc);  // Affichage de l'espèce
             printf("Année de naissance : %d\n", animaux[i].annee_naissance);
             printf("Poids : %.2f kg\n", animaux[i].poids);
 
+            espc = espece_en_chaine(animaux[i].espece);
             // Affichage du commentaire
             if (animaux[i].commentaire != NULL && animaux[i].commentaire[0] != '\0') {
                 printf("Commentaire : %s\n", animaux[i].commentaire);
@@ -49,6 +51,11 @@ void rechercher_par_age() {
             trouve = 1;
         }
     }
+
+    if (!trouve) {
+        printf("Aucun animal trouvé avec ce critère d'âge.\n");
+    }
+}
 
     if (!trouve) {
         printf("Aucun animal trouvé avec ce critère d'âge.\n");
