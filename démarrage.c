@@ -4,20 +4,20 @@
 void afficherMenu() {
     printf("__________________________________________\n"); 
     printf("|                                        |\n");
-    printf("|        🐾  MENU CHENYL-TECH  🐾         |\n"); 
+    printf("|        🐾  MENU CHENYL-TECH  🐾       |\n"); 
     printf("|________________________________________|\n"); 
     printf("|                                        |\n");
-    printf("|    1. 🔍  Rechercher un animal  🔍      |\n"); 
+    printf("|    1. 🔍  Rechercher un animal  🔍    |\n"); 
     printf("|                                        |\n");
-    printf("|    2. ➕   Ajouter un animal    ➕      |\n"); 
+    printf("|    2. ➕   Ajouter un animal    ➕    |\n"); 
     printf("|                                        |\n");
-    printf("|    3. 🏠  Adoption d'un animal  🏠      |\n");
+    printf("|    3. 🏠  Adoption d'un animal  🏠    |\n");
     printf("|                                        |\n");
-    printf("|    4. 🧹 Nettoyage hebdomadaire 🧹      |\n");
+    printf("|    4. 🧹 Nettoyage hebdomadaire 🧹    |\n");
     printf("|                                        |\n");
-    printf("|    5. 📋    Animaux par âge     📋      |\n");
+    printf("|    5. 📋    Animaux par âge     📋    |\n");
     printf("|                                        |\n");
-    printf("|    6. ❌        Quitter         ❌      |\n"); 
+    printf("|    6. ❌        Quitter         ❌    |\n"); 
     printf("|________________________________________|\n");    
 }
  
