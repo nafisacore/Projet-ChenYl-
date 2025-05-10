@@ -37,11 +37,11 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
             printf("Animal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
+            espc = espece_en_chaine(animaux[i].espece);
             printf("Espèce : %d\n", espc);  // Affichage de l'espèce
             printf("Année de naissance : %d\n", animaux[i].annee_naissance);
             printf("Poids : %.2f kg\n", animaux[i].poids);
 
-            espc = espece_en_chaine(animaux[i].espece);
             // Affichage du commentaire
             if (animaux[i].commentaire != NULL && animaux[i].commentaire[0] != '\0') {
                 printf("Commentaire : %s\n", animaux[i].commentaire);
