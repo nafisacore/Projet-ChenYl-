@@ -50,14 +50,14 @@ void sauvegarder_nombre_animaux(int nb_animaux) {
 }
 
 // Charge les animaux depuis le fichier
-void charger_animaux(Animal* animaux, int* nb_animaux) {
+void charger_animaux(Animal** animaux, int* nb_animaux) {
     charger_nombre_animaux(nb_animaux);
     if (*nb_animaux > MAX_ANIMAUX) {
         *nb_animaux = MAX_ANIMAUX;
     }
 
-    animaux = malloc(*nb_animaux * sizeof(Animal));
-    if (animaux == NULL) {
+    *animaux = malloc(*nb_animaux * sizeof(Animal));
+    if (*animaux == NULL) {
         printf("Erreur d'allocation mémoire.\n");
         exit(3);
     }
@@ -73,19 +73,19 @@ void charger_animaux(Animal* animaux, int* nb_animaux) {
         char esp[50];
 
         fscanf(f, "%d;%s;%s;%d;%f;%199[^\n]\n",
-               &animaux[i].id,
-               animaux[i].nom,
+               &(*animaux)[i].id,
+               (*animaux)[i].nom,
                esp,
-               &animaux[i].annee_naissance,
-               &animaux[i].poids,
+               &(*animaux)[i].annee_naissance,
+               &(*animaux)[i].poids,
                comm);
-        animaux[i].espece = chaine_en_espece(esp);
-        animaux[i].commentaire = malloc(strlen(comm) + 1);
-        if (animaux[i].commentaire == NULL) {
+        (*animaux)[i].espece = chaine_en_espece(esp);
+        (*animaux)[i].commentaire = malloc(strlen(comm) + 1);
+        if ((*animaux)[i].commentaire == NULL) {
             printf("Erreur d'allocation mémoire.\n");
             exit(6);
         }
-        strcpy(animaux[i].commentaire, comm);
+        strcpy((*animaux)[i].commentaire, comm);
     }
 
     fclose(f);
@@ -118,4 +118,4 @@ void liberer_memoire(Animal* animaux, int nb_animaux) {
     for (int i = 0; i < nb_animaux; i++) {
         free(animaux[i].commentaire); 
     }
-}    
+}   
