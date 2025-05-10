@@ -4,11 +4,11 @@ int calculer_age(int annee_naissance) {
     return 2025 - annee_naissance;  // Calcule l'âge en fonction de l'année actuelle
 }
 
-
 void rechercher_par_age(Animal* animaux, int nb_animaux) {
     int choix_age;
     const char *espc;
     int trouve = 0;
+    int veriff;
 
     // Demander à l'utilisateur de spécifier un type d'âge
     do {
@@ -17,13 +17,14 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
         printf("2. Adulte (entre 3 et 10 ans)\n");
         printf("3. Âgé (plus de 10 ans)\n");
         printf("Votre choix : ");
-        int veriff = scanf("%d", &choix_age);
-        vide_buffer();  
+
+        veriff = scanf("%d", &choix_age);
+        vide_buffer();  // Vide le buffer en cas d'entrée invalide
 
         if (veriff != 1 || choix_age < 1 || choix_age > 3) {
-            printf("Choix invalide, veuillez réessayer.\n");
+            printf("Choix invalide, veuillez entrer un chiffre entre 1 et 3.\n");
         }
-    } while (choix_age < 1 || choix_age > 3);
+    } while (veriff != 1 || choix_age < 1 || choix_age > 3);
 
     // Recherche des animaux en fonction de l'âge
     for (int i = 0; i < nb_animaux; i++) {
@@ -46,6 +47,7 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
             } else {
                 printf("Commentaire : Aucun\n");
             }
+            printf("\n");
             trouve = 1;
         }
     }
