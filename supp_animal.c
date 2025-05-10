@@ -1,12 +1,13 @@
 #include "animal.h"
 
 void supp_animal(Animal* animaux, int* nb_animaux) {
+    int id;
     int id_suppression;
     printf("Entrez l'ID de l'animal adopté : ");
-    scanf("%d", &id_suppression);
+    id = scanf("%d", &id_suppression);
 
     //vérification
-    if (scanf("%d", &id_suppression) != 1) {
+    if (id != 1) {
         printf("Entrée invalide. Veuillez entrer un nombre entier.\n");
         vide_buffer();  
         return;;
