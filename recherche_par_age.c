@@ -1,7 +1,5 @@
 #include "animal.h"
 
-
-
 int calculer_age(int annee_naissance) {
     return 2025 - annee_naissance;  // Calcule l'âge en fonction de l'année actuelle
 }
@@ -9,7 +7,7 @@ int calculer_age(int annee_naissance) {
 
 void rechercher_par_age(Animal* animaux, int nb_animaux) {
     int choix_age;
-    char *espc;
+    const char *espc;
     int trouve = 0;
 
     // Demander à l'utilisateur de spécifier un type d'âge
