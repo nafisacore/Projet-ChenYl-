@@ -38,7 +38,7 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
             espc = espece_en_chaine(animaux[i].espece);
-            printf("Espèce : %d\n", espc);  // Affichage de l'espèce
+            printf("Espèce : %s\n", espc);  // Affichage de l'espèce
             printf("Année de naissance : %d\n", animaux[i].annee_naissance);
             printf("Poids : %.2f kg\n", animaux[i].poids);
 
