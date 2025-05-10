@@ -1,12 +1,12 @@
 #include "animal.h"
 
 void inv_age(Animal* animaux, int nb_animaux) {
+    int tranche1 = 0, tranche2 = 0, tranche3 = 0, tranche4 = 0;
+
     if (nb_animaux == 0) {
         printf("Aucun animal dans le refuge.\n");
         return;
     }
-
-    int tranche1 = 0, tranche2 = 0, tranche3 = 0, tranche4 = 0;
 
     for (int i = 0; i < nb_animaux; i++) {
         int age = 2025 - animaux[i].annee_naissance;
@@ -27,3 +27,4 @@ void inv_age(Animal* animaux, int nb_animaux) {
     printf("6 à 9 ans     : %d animaux\n", tranche3);
     printf("10 ans et +   : %d animaux\n", tranche4);
 }
+
