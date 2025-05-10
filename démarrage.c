@@ -34,7 +34,7 @@ int main() {
 
 
     charger_nombre_animaux(&nb_animaux);
-    charger_animaux(animaux, &nb_animaux);  // Chargement initial
+    charger_animaux(&animaux, &nb_animaux);  // Chargement initial
 
     do {
         afficherMenu();
@@ -53,11 +53,11 @@ int main() {
                 printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 2:
-                ajouter_animal(animaux, &nb_animaux);
+                ajouter_animal(&animaux, &nb_animaux);
                 printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 3:
-                supp_animal(animaux, &nb_animaux);
+                supp_animal(&animaux, &nb_animaux);
                 printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 4:
