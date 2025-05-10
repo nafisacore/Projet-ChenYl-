@@ -9,7 +9,7 @@ void rechercher_par_id(Animal* animaux, int nb_animaux) {
     // Demander à l'utilisateur d'entrer un ID 
     do {
         printf("Entrez l'ID de l’animal à rechercher : ");
-        int veriff = scanf("%d", &id_recherche); 
+       veriff = scanf("%d", &id_recherche); 
 
         if (veriff != 1) {
             printf("ID invalide, veuillez entrer un entier.\n");
