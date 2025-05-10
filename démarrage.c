@@ -42,7 +42,7 @@ int main() {
         verif = scanf("%d", &choix);
 
         if (verif != 1) {
-            printf("Entree invalide, reessayer : \n");
+            printf("\nEntrée invalide, réessayez : \n");
             vide_buffer();
             continue;
         }
@@ -73,7 +73,7 @@ int main() {
                 exit(11);
                 break;
             default:
-                printf("Choix invalide, reessayer :\n");
+                printf("\nChoix invalide, réessayez :\n");
         }
     } while (choix != 4 && choix != 2 && choix != 3 && choix != 1 && choix != 5 && choix != 6);
 
