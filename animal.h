@@ -26,8 +26,8 @@ typedef struct {
 //démarrage.c
 void afficherMenu();
 void vide_buffer();
-void ajouter_animal(Animal* animaux, int* nb_animaux);
-void supp_animal(Animal* animaux, int* nb_animaux);
+void ajouter_animal(Animal** animaux, int* nb_animaux);
+void supp_animal(Animal** animaux, int* nb_animaux);
 
 //recherche
 void rechercher_animal(Animal* animaux, int nb_animaux);
@@ -47,6 +47,7 @@ const char* espece_en_chaine(Espece e);
 Espece chaine_en_espece(const char* s);
 void charger_nombre_animaux(int* nb_animaux);
 void sauvegarder_nombre_animaux(int nb_animaux);
-void charger_animaux(Animal* animaux, int* nb_animaux);
+void charger_animaux(Animal** animaux, int* nb_animaux);
 void sauvegarder_animaux(Animal* animaux, int nb_animaux);
 void liberer_memoire(Animal* animaux, int nb_animaux);
+
