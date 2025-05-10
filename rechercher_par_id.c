@@ -4,18 +4,19 @@
 void rechercher_par_id(Animal* animaux, int nb_animaux) {
     int id_recherche, veriff;
     int trouve = 0;
-    char *espc;
+    const char *espc;
 
     // Demander à l'utilisateur d'entrer un ID 
     do {
         printf("Entrez l'ID de l’animal à rechercher : ");
-       veriff = scanf("%d", &id_recherche); 
+        veriff = scanf("%d", &id_recherche); 
 
         if (veriff != 1) {
             printf("ID invalide, veuillez entrer un entier.\n");
             vide_buffer();  // Vide le buffer en cas d'entrée invalide
+            continue;
         }
-    } while (id_recherche <= 0 || !veriff);  
+    } while (id_recherche <= 0 || veriff!=1);  
 
     // Recherche de l'animal par ID
     for (int i = 0; i < nb_animaux; i++) {
@@ -44,4 +45,3 @@ void rechercher_par_id(Animal* animaux, int nb_animaux) {
         printf("Aucun animal trouvé avec cet ID.\n");
     }
 }
-
