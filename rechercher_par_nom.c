@@ -43,7 +43,3 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
         printf("Aucun animal trouvé avec ce nom.\n");
     }
 }
-    if (!trouve) {
-        printf("Aucun animal trouvé avec ce nom.\n");
-    }
-}
