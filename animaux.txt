@@ -1,0 +1,15 @@
+1;Rex;Chien;2015;30.50;Sage
+2;Mia;Chat;2018;4.20;
+3;Coco;Hamster;2020;0.25;
+4;Speedy;Autruche;2019;120.30;Très rapide
+5;Max;Chien;2017;25.10;Affectionné
+6;Luna;Chat;2021;3.80;Curieuse
+7;Nina;Hamster;2022;0.20;
+8;Flash;Autruche;2014;130.00;Imposante
+9;Buddy;Chien;2016;32.40;Loyal
+10;Whiskers;Chat;2019;4.00;Raffinée
+11;Rocky;Hamster;2015;0.18;Toujours en mouvement
+12;Turbo;Autruche;2018;140.70;
+13;Charlie;Chien;2020;28.50;Amical et protecteur
+14;Chester;Chat;2022;3.60;
+15;Peanut;Hamster;2017;0.22;Très énergique
