@@ -29,7 +29,7 @@ void vide_buffer(){
 
 int main() {  
     int choix, verif;
-    Animal** animaux = NULL;
+    Animal* animaux = NULL;
     int nb_animaux = 0;
 
 
@@ -52,11 +52,11 @@ int main() {
                 printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 2:
-                ajouter_animal(&animaux, &nb_animaux);
+                ajouter_animal(animaux, &nb_animaux);
                 printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 3:
-                supp_animal(&animaux, &nb_animaux);
+                supp_animal(animaux, &nb_animaux);
                 printf("Merci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 4:
