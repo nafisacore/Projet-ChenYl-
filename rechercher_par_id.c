@@ -1,12 +1,11 @@
 #include "animal.h"
 
-
 void rechercher_par_id(Animal* animaux, int nb_animaux) {
     int id_recherche, veriff;
     int trouve = 0;
     const char *espc;
 
-    // Demander à l'utilisateur d'entrer un ID 
+    // Demander à l'utilisateur d'entrer un ID
     do {
         printf("Entrez l'ID de l’animal à rechercher : ");
         veriff = scanf("%d", &id_recherche); 
@@ -16,7 +15,14 @@ void rechercher_par_id(Animal* animaux, int nb_animaux) {
             vide_buffer();  // Vide le buffer en cas d'entrée invalide
             continue;
         }
-    } while (id_recherche <= 0 || veriff!=1);  
+
+        if (id_recherche <= 0) {
+            printf("L'ID doit être un nombre positif.\n");
+        } else if (id_recherche > nb_animaux) {
+            printf("L'ID doit être inférieur ou égal à %d (nombre d'animaux).\n", nb_animaux);
+        }
+
+    } while (veriff != 1 || id_recherche <= 0 || id_recherche > nb_animaux);  // Redemande tant que l'ID n'est pas valide
 
     // Recherche de l'animal par ID
     for (int i = 0; i < nb_animaux; i++) {
@@ -45,3 +51,4 @@ void rechercher_par_id(Animal* animaux, int nb_animaux) {
         printf("Aucun animal trouvé avec cet ID.\n");
     }
 }
+
