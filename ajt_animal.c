@@ -1,59 +1,79 @@
 #include "animal.h"
 
-// Procédure ajouter un animal
+
 void ajouter_animal(Animal** animaux, int* nb_animaux) {
+    // Vérification du nombre maximal d'animaux
     if (*nb_animaux >= MAX_ANIMAUX) {
-        printf("Le nombre maximal d'animaux est atteint.\n");
+        printf("Trop d'animaux.\n");
         return;
     }
 
+    // Déclaration de la structure Animal pour le nouvel animal
     Animal nouvel_animal;
     nouvel_animal.id = *nb_animaux + 1;
 
-    // Saisie des infos par l'utilisateur
+    // Nom de l'animal + sécurisation
+    printf("Nom (lettres uniquement) : ");
+    fgets(nouvel_animal.nom, sizeof(nouvel_animal.nom), stdin);
+    nouvel_animal.nom[strcspn(nouvel_animal.nom, "\n")] = '\0';
 
-    // Nom
-    printf("Entrez le nom de l'animal: ");
-    scanf("%s", nouvel_animal.nom);
-    
-    // Espèce
-    printf("Entrez l'espèce (chien, chat, hamster, autruche): ");
-    char race[20];
-    scanf("%s", race);
-    nouvel_animal.espece = chaine_en_espece(race);
-
-    // Année de naissance
-    printf("Entrez l'année de naissance de l'animal: ");
-    scanf("%d", &nouvel_animal.annee_naissance);
-
-    // Poids
-    printf("Entrez le poids de l'animal en kg: ");
-    scanf("%f", &nouvel_animal.poids);
-
-    // Saisie du commentaire
-    nouvel_animal.commentaire = malloc(500 * sizeof(char));  // Alloue de la mémoire pour le commentaire
-    if (nouvel_animal.commentaire == NULL) {
-        printf("Erreur d'allocation mémoire pour le commentaire.\n");
-        exit(5);
+    // Vérification qu'il n'y a pas de chiffres dans le nom
+    for (int i = 0; nouvel_animal.nom[i]; i++) {
+        if (nouvel_animal.nom[i] >= '0' && nouvel_animal.nom[i] <= '9') {
+            printf("Pas de chiffres dans le nom !\n");
+            return;
+        }
     }
 
-    printf("Entrez un commentaire : ");
-    scanf(" %[^\n]", nouvel_animal.commentaire);  // Prend toute la ligne avec espaces
+    // Espèce de l'animal + sécurisation
+    char espece_txt[20];
+    printf("Espèce (chien, chat, hamster, autruche) : ");
+    fgets(espece_txt, sizeof(espece_txt), stdin);
+    espece_txt[strcspn(espece_txt, "\n")] = '\0';
 
-    // On agrandit le tableau pour ajouter l’animal
-    *animaux = realloc(*animaux, (*nb_animaux + 1) * sizeof(Animal));
-    if (*animaux == NULL) {
-        printf("Erreur d'allocation mémoire.\n");
-        exit(6);
+    // Vérification que l'espèce est valide
+    if (strcmp(espece_txt, "chien") != 0 && strcmp(espece_txt, "chat") != 0 &&
+        strcmp(espece_txt, "hamster") != 0 && strcmp(espece_txt, "autruche") != 0) {
+        printf("Espèce inconnue !\n");
+        return;
     }
 
-    // On met l’animal à la fin du tableau
-    (*animaux)[*nb_animaux] = nouvel_animal;
-    (*nb_animaux)++;
+    // Conversion de l'espèce 
+    nouvel_animal.espece = chaine_en_espece(espece_txt);
 
-    sauvegarder_animaux(*animaux, *nb_animaux);        
-    sauvegarder_nombre_animaux(*nb_animaux);   
+    // Année de naissance : vérification de l'entrée
+    printf("Année de naissance : ");
+    if (scanf("%d", &nouvel_animal.annee_naissance) != 1) {
+        printf("Erreur année.\n");
+        return;
+    }
+    vide_buffer();  // Vider le buffer après l'entrée de l'année
 
-    printf("L'animal a été ajouté avec succès !\n");
+    // Poids : vérification de l'entrée
+    printf("Poids (kg) : ");
+    if (scanf("%f", &nouvel_animal.poids) != 1) {
+        printf("Erreur poids.\n");
+        return;
+    }
+    vide_buffer();  // Vider le buffer après l'entrée du poids
+
+    // Commentaire : lecture sécurisée
+    nouvel_animal.commentaire = malloc(500);
+    if (!nouvel_animal.commentaire) {
+        printf("Erreur d'allocation.\n");
+        return;
+    }
+    printf("Commentaire (vide si rien) : ");
+    fgets(nouvel_animal.commentaire, 500, stdin);
+    nouvel_animal.commentaire[strcspn(nouvel_animal.commentaire, "\n")] = '\0';
+
+    // Réallouer de la mémoire 
+    if (*nb_animaux >= MAX_ANIMAUX) {
+        *animaux = realloc(*animaux, (*nb_animaux + 1) * sizeof(Animal));
+        if (*animaux == NULL) {
+            printf("Erreur de réallocation de mémoire.\n");
+            exit(30);  
+        }
+    }
+
 }
-
