@@ -4,6 +4,7 @@
 void rechercher_par_id(Animal* animaux, int nb_animaux) {
     int id_recherche, veriff;
     int trouve = 0;
+    char *espc;
 
     // Demander à l'utilisateur d'entrer un ID 
     do {
@@ -22,7 +23,8 @@ void rechercher_par_id(Animal* animaux, int nb_animaux) {
             printf("Animal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
-            printf("Espèce : %s\n", animaux[i].espece);  // Affichage de l'espèce
+            espc = espece_en_chaine(animaux[i].espece);
+            printf("Espèce : %s\n", espc);  // Affichage de l'espèce
             printf("Année de naissance : %d\n", animaux[i].annee_naissance);
             printf("Poids : %.2f kg\n", animaux[i].poids);
 
