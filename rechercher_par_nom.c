@@ -5,7 +5,7 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
     char nom_recherche[100];
     int trouve = 0;
     int veriff;
-    char *espc;
+    const char *espc;
 
     // Demander à l'utilisateur d'entrer le nom
     do {
@@ -39,6 +39,10 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
         }
     }
 
+    if (!trouve) {
+        printf("Aucun animal trouvé avec ce nom.\n");
+    }
+}
     if (!trouve) {
         printf("Aucun animal trouvé avec ce nom.\n");
     }
