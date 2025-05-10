@@ -1,29 +1,41 @@
 #include "animal.h"
 
-
 void rechercher_par_nom(Animal* animaux, int nb_animaux) {
     char nom_recherche[100];
     int trouve = 0;
-    int veriff;
-    const char *espc;
 
     // Demander à l'utilisateur d'entrer le nom
     do {
-        printf("Entrez le nom de l’animal à rechercher (seulement des lettres) : ");
-        veriff = scanf("%s", nom_recherche);  // Lecture de l'entrée du nom
+        printf("Entrez le nom de l’animal à rechercher (sans espaces) : ");
+        
+        // Utilisation de fgets pour lire l'entrée complète
+        fgets(nom_recherche, sizeof(nom_recherche), stdin);
+        
+        // Supprimer le caractère de nouvelle ligne ajouté par fgets
+        nom_recherche[strcspn(nom_recherche, "\n")] = '\0';
 
-        if (veriff != 1) {
-            printf("Entree invalide, veuillez réessayer.\n");
-            vide_buffer();
+        // Vérifier que le nom ne contient que des lettres (pas d'espaces ni de chiffres)
+        int valid = 1;
+        for (int i = 0; nom_recherche[i] != '\0'; i++) {
+            if (!isalpha(nom_recherche[i])) {
+                valid = 0;
+                break;
+            }
         }
-    } while (veriff != 1);
 
+        if (!valid) {
+            printf("Nom invalide, uniquement des lettres sans espaces autorisées.\n");
+        }
+
+    } while (nom_recherche[0] == '\0' || !isalpha(nom_recherche[0])); // Redemander si nom invalide
+
+    // Recherche de l'animal
     for (int i = 0; i < nb_animaux; i++) {
         if (strcmp(animaux[i].nom, nom_recherche) == 0) {
             printf("Animal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
-            espc = espece_en_chaine(animaux[i].espece);
+            const char *espc = espece_en_chaine(animaux[i].espece);
             printf("Espèce : %s\n", espc);  
             printf("Année de naissance : %d\n", animaux[i].annee_naissance);
             printf("Poids : %.2f kg\n", animaux[i].poids);
@@ -36,6 +48,7 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
             }
 
             trouve = 1;
+            break; // Arrêter dès qu'on trouve l'animal
         }
     }
 
