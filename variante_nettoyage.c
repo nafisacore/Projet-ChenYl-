@@ -35,6 +35,7 @@ void day_clean(Animal* animaux, int nb_animaux) {
     int temps_vides = cages_vides * 14;
     total_minutes += temps_vides;
 
-    printf("Temps total de nettoyage hebdomadaire : %d minutes = %d heures %d min)\n",
+    printf("Temps total de nettoyage hebdomadaire : %d minutes = (%d heures %d min)\n",
            total_minutes, total_minutes / 60, total_minutes % 60);
 }
+
