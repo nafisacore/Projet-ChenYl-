@@ -22,7 +22,7 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
             printf("Animal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
-            printf("Espèce : %d\n", animaux[i].espece);  
+            printf("Espèce : %s\n", animaux[i].espece);  
             printf("Année de naissance : %d\n", animaux[i].annee_naissance);
             printf("Poids : %.2f kg\n", animaux[i].poids);
 
