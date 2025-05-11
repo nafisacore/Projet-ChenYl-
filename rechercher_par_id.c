@@ -51,3 +51,4 @@ void rechercher_par_id(Animal* animaux, int nb_animaux) {
         printf("Aucun animal trouvé avec cet ID.\n");
     }
 }
+
