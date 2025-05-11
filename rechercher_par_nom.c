@@ -55,7 +55,6 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
             }
 
             trouve = 1;
-            break; // Arrêter dès qu'on trouve l'animal
         }
     }
 
