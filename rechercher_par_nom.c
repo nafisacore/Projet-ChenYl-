@@ -26,16 +26,20 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
             }
         }
 
-        if (!valid) {
-            printf("Nom invalide, uniquement des lettres sans espaces autorisées, et la première lettre doit être en majuscule.\n");
+        if (islower(nom_recherche[0])) {
+            valid = 0;
         }
 
-    } while (nom_recherche[0] == '\0' || !isalpha(nom_recherche[0])); // Redemander si nom invalide
+        if (!valid) {
+            printf("Nom invalide, uniquement des lettres sans espaces autorisées.\n");
+        }
+
+    } while (nom_recherche[0] == '\0' || !isalpha(nom_recherche[0]) || islower(nom_recherche[0])); // Redemander si nom invalide
 
     // Recherche de l'animal
     for (int i = 0; i < nb_animaux; i++) {
         if (strcmp(animaux[i].nom, nom_recherche) == 0) {
-            printf("Animal trouvé !\n");
+            printf("\nAnimal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
             const char *espc = espece_en_chaine(animaux[i].espece);
