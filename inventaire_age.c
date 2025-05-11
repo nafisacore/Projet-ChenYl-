@@ -28,3 +28,4 @@ void inv_age(Animal* animaux, int nb_animaux) {
     printf("10 ans et +   : %d animaux\n", tranche4);
 }
 
+
