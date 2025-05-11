@@ -33,7 +33,7 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
         if ((choix_age == 1 && age < 3) ||  // Jeune
             (choix_age == 2 && age >= 3 && age <= 10) ||  // Adulte
             (choix_age == 3 && age > 10)) {  // Âgé
-            printf("Animal trouvé !\n");
+            printf("\nAnimal trouvé !\n");
             printf("ID : %d\n", animaux[i].id);
             printf("Nom : %s\n", animaux[i].nom);
             espc = espece_en_chaine(animaux[i].espece);
@@ -56,4 +56,5 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
         printf("Aucun animal trouvé avec ce critère d'âge.\n");
     }
 }
+
 
