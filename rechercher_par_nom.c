@@ -6,10 +6,9 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
 
     // Demander à l'utilisateur d'entrer le nom
     do {
-        printf("\nEntrez le nom de l’animal à rechercher (sans espaces) : ");
+        printf("\nEntrez le nom de l’animal à rechercher (1ère lettre en majuscules) : ");
         
         // Utilisation de fgets pour lire l'entrée complète
-        fgets(nom_recherche, sizeof(nom_recherche), stdin);
         if (fgets(nom_recherche, sizeof(nom_recherche), stdin) == NULL) {
             printf("Erreur de lecture.\n");
             return;
@@ -28,7 +27,7 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
         }
 
         if (!valid) {
-            printf("Nom invalide, uniquement des lettres sans espaces autorisées.\n");
+            printf("Nom invalide, uniquement des lettres sans espaces autorisées, et la première lettre doit être en majuscule.\n");
         }
 
     } while (nom_recherche[0] == '\0' || !isalpha(nom_recherche[0])); // Redemander si nom invalide
