@@ -21,7 +21,7 @@ void inv_age(Animal* animaux, int nb_animaux) {
             tranche4++;
     }
 
-    printf("Nombre total d'animaux : %d\n", nb_animaux);
+    printf("\nNombre total d'animaux : %d\n", nb_animaux);
     printf("0 à 2 ans     : %d animaux\n", tranche1);
     printf("3 à 5 ans     : %d animaux\n", tranche2);
     printf("6 à 9 ans     : %d animaux\n", tranche3);
