@@ -50,26 +50,26 @@ int main() {
         switch (choix) {
             case 1:
                 rechercher_animal(animaux, nb_animaux);
-                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n");
                 break;
             case 2:
                 ajouter_animal(&animaux, &nb_animaux);
-                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
                 break;
             case 3:
                 supp_animal(&animaux, &nb_animaux);
-                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
                 break;
             case 4:
                 day_clean(animaux, nb_animaux);
-                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
                 break;  
             case 5:
                 inv_age(animaux, nb_animaux);
-                printf("Merci d'avoir utilisé Chenyl-Tech !\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
                 break;      
             case 6:
-                printf("Au revoir !\n");
+                printf("\nAu revoir !\n\n");
                 exit(11);
                 break;
             default:
