@@ -6,10 +6,14 @@ void rechercher_par_nom(Animal* animaux, int nb_animaux) {
 
     // Demander à l'utilisateur d'entrer le nom
     do {
-        printf("Entrez le nom de l’animal à rechercher (sans espaces) : ");
+        printf("\nEntrez le nom de l’animal à rechercher (sans espaces) : ");
         
         // Utilisation de fgets pour lire l'entrée complète
         fgets(nom_recherche, sizeof(nom_recherche), stdin);
+        if (fgets(nom_recherche, sizeof(nom_recherche), stdin) == NULL) {
+            printf("Erreur de lecture.\n");
+            return;
+        }
         
         // Supprimer le caractère de nouvelle ligne ajouté par fgets
         nom_recherche[strcspn(nom_recherche, "\n")] = '\0';
