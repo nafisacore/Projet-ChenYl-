@@ -54,6 +54,8 @@ int main() {
                 break;
             case 2:
                 ajouter_animal(&animaux, &nb_animaux);
+                sauvegarder_animaux(animaux, nb_animaux);
+                sauvegarder_nombre_animaux(nb_animaux);
                 printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
                 break;
             case 3:
@@ -78,6 +80,7 @@ int main() {
     } while (choix != 4 && choix != 2 && choix != 3 && choix != 1 && choix != 5 && choix != 6);
 
     sauvegarder_animaux(animaux, nb_animaux);
+    sauvegarder_nombre_animaux(nb_animaux);
     liberer_memoire(animaux, nb_animaux);
     free(animaux);
     return 0;
