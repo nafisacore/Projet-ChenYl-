@@ -12,7 +12,7 @@ void rechercher_par_age(Animal* animaux, int nb_animaux) {
 
     // Demander à l'utilisateur de spécifier un type d'âge
     do {
-        printf("Choisissez un type d'âge d'animal à rechercher :\n");
+        printf("\nChoisissez un type d'âge d'animal à rechercher :\n");
         printf("1. Jeune (moins de 3 ans)\n");
         printf("2. Adulte (entre 3 et 10 ans)\n");
         printf("3. Âgé (plus de 10 ans)\n");
