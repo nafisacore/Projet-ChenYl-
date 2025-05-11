@@ -1,4 +1,5 @@
 Dans un terminal Windows Powershell : 
+
 Pour afficher les emojis rajouter cette ligne de code :
 $OutputEncoding = [Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
 Ecrire : 
