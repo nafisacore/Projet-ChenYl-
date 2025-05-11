@@ -13,16 +13,32 @@ void ajouter_animal(Animal** animaux, int* nb_animaux) {
     // Nettoyer le buffer avant toute saisie fgets si nécessaire
     vide_buffer();
 
-    printf("Nom (lettres uniquement) : ");
-    fgets(nouvel_animal.nom, sizeof(nouvel_animal.nom), stdin);
-    nouvel_animal.nom[strcspn(nouvel_animal.nom, "\n")] = '\0';
+    //demander nom + sécurisations
+    printf("Nom (lettres uniquement et première lettre en majuscule) : ");
+    do {
+        fgets(nouvel_animal.nom, sizeof(nouvel_animal.nom), stdin);
+        nouvel_animal.nom[strcspn(nouvel_animal.nom, "\n")] = '\0';  // Enlève le '\n' ajouté par fgets
 
-    for (int i = 0; nouvel_animal.nom[i]; i++) {
-        if (!isalpha(nouvel_animal.nom[i])) {
-            printf("Pas de chiffres ni de symboles dans le nom !\n");
-            return;
+        // Vérifie que la première lettre est en majuscule
+        if (nouvel_animal.nom[0] < 'A' || nouvel_animal.nom[0] > 'Z') {
+            printf("La première lettre doit être en majuscule !\n");
+            continue;  // Redemander tant que la première lettre n'est pas une majuscule
         }
-    }
+
+        // Vérifie que le nom ne contient que des lettres
+        int valid = 1;
+        for (int i = 0; nouvel_animal.nom[i]; i++) {
+        if (!isalpha(nouvel_animal.nom[i])) {
+            valid = 0;
+            break;
+        }
+        }
+
+        if (!valid) {
+            printf("Le nom ne doit contenir que des lettres sans chiffres ni symboles !\n");
+        }
+    } while (nouvel_animal.nom[0] == '\0' || !isalpha(nouvel_animal.nom[0]) || !isupper(nouvel_animal.nom[0]));
+
 
     char espece_txt[20];
     printf("Espèce (chien, chat, hamster, autruche) : ");
@@ -37,13 +53,15 @@ void ajouter_animal(Animal** animaux, int* nb_animaux) {
 
     nouvel_animal.espece = chaine_en_espece(espece_txt);
 
-    printf("Année de naissance : ");
-    if (scanf("%d", &nouvel_animal.annee_naissance) != 1) {
-        printf("Erreur année.\n");
-        vide_buffer();
-        return;
+    printf("Année de naissance (entre 1990 et 2025) : ");
+    while (scanf("%d", &nouvel_animal.annee_naissance) != 1 || nouvel_animal.annee_naissance < 1990 || nouvel_animal.annee_naissance > 2025) {
+        printf("Erreur : vous devez entrer une année valide (entre 1990 et 2025).\n");
+        vide_buffer();  
+        printf("Année de naissance (entre 1990 et 2025) : ");
     }
-    vide_buffer();
+
+    vide_buffer();  // Après avoir reçu la valeur correcte, on vide le buffer.
+
 
     printf("Poids (kg) : ");
     if (scanf("%f", &nouvel_animal.poids) != 1) {
@@ -78,3 +96,4 @@ void ajouter_animal(Animal** animaux, int* nb_animaux) {
 
     printf("Animal ajouté avec succès !\n");
 }
+
