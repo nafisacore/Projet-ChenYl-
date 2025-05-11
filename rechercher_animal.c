@@ -4,7 +4,7 @@ void rechercher_animal(Animal* animaux, int nb_animaux) {
     int choixx, veriff;
 
     do {
-        printf("\nSouhaitez-vous rechercher l'animal par :\n1. Son nom\n2. Son ID\n3. Son type d'âge\n4. Quitter\nChoisissez : ");
+        printf("\nSouhaitez-vous rechercher l'animal par :\n1. Son nom\n2. Son ID\n3. Son type d'âge\n4. Quitter\n\nChoisissez : ");
         
         veriff = scanf("%d", &choixx);
 
@@ -27,7 +27,7 @@ void rechercher_animal(Animal* animaux, int nb_animaux) {
                 rechercher_par_age(animaux, nb_animaux);
                 break;
             case 4:
-                printf("Au revoir !\n");
+                printf("\nAu revoir !\n");
                 break;
             default:
                 break;
