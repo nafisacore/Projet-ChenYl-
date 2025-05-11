@@ -63,13 +63,15 @@ void ajouter_animal(Animal** animaux, int* nb_animaux) {
     vide_buffer();  // Après avoir reçu la valeur correcte, on vide le buffer.
 
 
+    // --- POIDS ---
     printf("Poids (kg) : ");
-    if (scanf("%f", &nouvel_animal.poids) != 1) {
-        printf("Erreur poids.\n");
+    while (scanf("%f", &nouvel_animal.poids) != 1 || nouvel_animal.poids <= 0) {
+        printf("Erreur : poids strictement positif.\n");
         vide_buffer();
-        return;
+        printf("Poids (kg) : ");
     }
     vide_buffer();
+
 
     nouvel_animal.commentaire = malloc(500);
     if (!nouvel_animal.commentaire) {
