@@ -50,25 +50,25 @@ int main() {
         switch (choix) {
             case 1:
                 rechercher_animal(animaux, nb_animaux);
-                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\nRetour au menu.\n");
                 break;
             case 2:
                 ajouter_animal(&animaux, &nb_animaux);
                 sauvegarder_animaux(animaux, nb_animaux);
                 sauvegarder_nombre_animaux(nb_animaux);
-                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\nRetour au menu.\n");
                 break;
             case 3:
                 supp_animal(&animaux, &nb_animaux);
-                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\nRetour au menu.\n");
                 break;
             case 4:
                 day_clean(animaux, nb_animaux);
-                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\nRetour au menu.\n");
                 break;  
             case 5:
                 inv_age(animaux, nb_animaux);
-                printf("\nMerci d'avoir utilisé Chenyl-Tech !\n\n");
+                printf("\nMerci d'avoir utilisé Chenyl-Tech !\nRetour au menu.\n");
                 break;      
             case 6:
                 printf("\nAu revoir !\n\n");
@@ -77,7 +77,7 @@ int main() {
             default:
                 printf("\nChoix invalide, réessayez :\n");
         }
-    } while (choix != 4 && choix != 2 && choix != 3 && choix != 1 && choix != 5 && choix != 6);
+    } while (choix != 6);
 
     sauvegarder_animaux(animaux, nb_animaux);
     sauvegarder_nombre_animaux(nb_animaux);
